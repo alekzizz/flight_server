@@ -89,7 +89,7 @@ public class MySQLAccess {
 
     public void setSoldTickets(int flightId, int amount) throws Exception {
         open();
-        preparedStatement = connect.prepareStatement("UPDATE Tickets SET bought_tickets_amount=? WHERE id=?");
+        preparedStatement = connect.prepareStatement("UPDATE Flights SET `bought_tickets_amount`=? WHERE id=?");
         preparedStatement.setInt(1, amount);
         preparedStatement.setInt(2, flightId);
         preparedStatement.executeUpdate();
