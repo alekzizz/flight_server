@@ -1,8 +1,10 @@
 package service;
 
+import com.itextpdf.text.Document;
 import db.MySQLAccess;
 import model.Flight;
 import model.Ticket;
+import model.Utils;
 
 import javax.jws.WebService;
 import java.io.File;
@@ -62,6 +64,7 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public File getPDF(int ticketId) throws Exception {
-        return null;
+        Ticket ticket = dao.getTicket(ticketId);
+        return Utils.generatePDFFromTicket(ticket);
     }
 }

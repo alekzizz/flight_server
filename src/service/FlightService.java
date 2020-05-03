@@ -1,18 +1,20 @@
 package service;
 
+import com.itextpdf.text.Document;
 import model.Flight;
 import model.Ticket;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
-import javax.jws.soap.SOAPBinding;
-import javax.jws.soap.SOAPBinding.Style;
-import javax.jws.soap.SOAPBinding.Use;
+import javax.xml.ws.BindingType;
+import javax.xml.ws.soap.MTOM;
+import javax.xml.ws.soap.SOAPBinding;
 import java.io.File;
 import java.util.List;
 
+@MTOM
 @WebService
-@SOAPBinding(style = Style.DOCUMENT, use = Use.LITERAL)
+@BindingType(value = SOAPBinding.SOAP11HTTP_MTOM_BINDING)
 public interface FlightService {
 
     @WebMethod

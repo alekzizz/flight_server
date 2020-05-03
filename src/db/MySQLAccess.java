@@ -87,6 +87,24 @@ public class MySQLAccess {
         close();
     }
 
+    public Ticket getTicket(int ticketId) throws Exception {
+        Ticket ticket = null;
+        open();
+        statement = connect.createStatement();
+        preparedStatement = connect.prepareStatement("SELECT * FROM Tickets WHERE id=?");
+        preparedStatement.setInt(1, ticketId);
+        resultSet = preparedStatement.executeQuery();
+        while (resultSet.next())
+            ticket = new Ticket(
+                    resultSet.getInt(1),
+                    resultSet.getInt(2),
+                    resultSet.getInt(3),
+                    resultSet.getInt(4)
+            );
+        close();
+        return ticket;
+    }
+
     public void setSoldTickets(int flightId, int amount) throws Exception {
         open();
         preparedStatement = connect.prepareStatement("UPDATE Flights SET `bought_tickets_amount`=? WHERE id=?");
