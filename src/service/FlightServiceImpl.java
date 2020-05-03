@@ -7,11 +7,16 @@ import model.Ticket;
 import model.Utils;
 
 import javax.jws.WebService;
+import javax.xml.ws.BindingType;
+import javax.xml.ws.soap.MTOM;
+import javax.xml.ws.soap.SOAPBinding;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+@MTOM
 @WebService(endpointInterface = "service.FlightService")
+@BindingType(value = SOAPBinding.SOAP12HTTP_MTOM_BINDING)
 public class FlightServiceImpl implements FlightService {
 
     private final MySQLAccess dao = new MySQLAccess();
