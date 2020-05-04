@@ -19,7 +19,11 @@ public class Utils {
         {
             PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("HelloWorld.pdf"));
             document.open();
-            document.add(new Paragraph("Potwierdzam."));
+            document.add(new Paragraph("Potwierdzenie zakupu biletu."));
+            document.add(new Paragraph("Id klienta: " + ticket.getClientId()));
+            document.add(new Paragraph("Id lotu: " + ticket.getFlightId()));
+            document.add(new Paragraph("Cena: " + ticket.getPrice()));
+
             document.close();
             writer.close();
             DataSource fds = new FileDataSource("HelloWorld.pdf");
