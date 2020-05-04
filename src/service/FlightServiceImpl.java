@@ -6,6 +6,7 @@ import model.Flight;
 import model.Ticket;
 import model.Utils;
 
+import javax.activation.DataHandler;
 import javax.jws.WebService;
 import javax.xml.ws.BindingType;
 import javax.xml.ws.soap.MTOM;
@@ -68,7 +69,7 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public File getPDF(int ticketId) throws Exception {
+    public DataHandler getPDF(int ticketId) throws Exception {
         Ticket ticket = dao.getTicket(ticketId);
         return Utils.generatePDFFromTicket(ticket);
     }

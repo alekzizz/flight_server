@@ -3,9 +3,9 @@ package service;
 import model.Flight;
 import model.Ticket;
 
+import javax.activation.DataHandler;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
-import java.io.File;
 import java.util.List;
 
 @WebService
@@ -24,6 +24,6 @@ public interface FlightService {
     Flight buyTicket(int flightId, int clientId) throws Exception;
 
     @WebMethod
-    File getPDF(int ticketId) throws Exception;
+    DataHandler getPDF(int ticketId) throws Exception;
 
 }

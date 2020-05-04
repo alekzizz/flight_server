@@ -5,12 +5,15 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
 public class Utils {
-    public static File generatePDFFromTicket(Ticket ticket) {
+    public static DataHandler generatePDFFromTicket(Ticket ticket) {
         Document document = new Document();
         try
         {
@@ -19,7 +22,8 @@ public class Utils {
             document.add(new Paragraph("Potwierdzam."));
             document.close();
             writer.close();
-            return new File("HelloWorld.pdf");
+            DataSource fds = new FileDataSource("HelloWorld.pdf");
+            return new DataHandler(fds);
         } catch (DocumentException | FileNotFoundException e)
         {
             e.printStackTrace();
